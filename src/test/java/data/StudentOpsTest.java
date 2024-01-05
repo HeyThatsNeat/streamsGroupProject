@@ -39,7 +39,7 @@ public class StudentOpsTest {
 
   // Question 2
   @Test
-  void shouldReturnAListOfStudents() {
+  void shouldAtLeastReturnAListOfStudentsForSortedAge() {
     List<Student> sortedAge = StudentOps.sortStudentsByAge(students);
     assertNotNull(sortedAge);
   }
@@ -58,7 +58,7 @@ public class StudentOpsTest {
 
   // Question 3
   @Test
-  void shouldReturnANumberAboveZero() {
+  void shouldReturnAnAverageNumberAboveZero() {
     double average = StudentOps.averageAge(students);
     assertTrue(average > 0);
   }
@@ -71,7 +71,7 @@ public class StudentOpsTest {
 
   // Question 4
   @Test
-  void shouldReturnListOfFullNames() {
+  void shouldAtLeastReturnListForFullNames() {
     List<String> fullNames = StudentOps.showFullNames(students);
     assertNotNull(fullNames);
   }
@@ -80,6 +80,21 @@ public class StudentOpsTest {
   void shouldReturnFirstFullName() {
     List<String> fullNames = StudentOps.showFullNames(students);
     assertEquals("Kaitlyn Padden", fullNames.get(0));
+  }
+
+  // Question 5
+
+  @Test
+  void shouldAtLeastReturnAListOfStudentsForGender() {
+    List<Student> groupedByGender = StudentOps.groupByGender(students);
+    assertNotNull(groupedByGender);
+  }
+
+  @Test
+  void shouldReturnFalseForNonMatchingGenders() {
+    List<Student> sortedGenders = StudentOps.groupByGender(students);
+    assertNotEquals("Agender", students.get(0).getGender());
+
   }
 }
 

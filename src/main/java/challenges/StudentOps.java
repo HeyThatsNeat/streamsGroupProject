@@ -60,4 +60,11 @@ public class StudentOps {
             .toList();
   }
 
+  //5. Group Students by Gender: Group the students by gender.
+  public static List<Student> groupByGender(List<Student> students) {
+    return students.stream()
+            .sorted(Comparator.comparing(Student::getGender))
+            .toList();
+  }
+
 }
