@@ -37,7 +37,7 @@ public class StudentOpsTest {
     assertEquals("Female", filteredStudents.get(5).getGender());
   }
 
-  //Question 2
+  // Question 2
   @Test
   void shouldReturnAListOfStudents() {
     List<Student> sortedAge = StudentOps.sortStudentsByAge(students);
@@ -54,6 +54,20 @@ public class StudentOpsTest {
   void shouldReturnOldestStudent() {
     List<Student> sortedAge = StudentOps.sortStudentsByAge(students);
     assertEquals(students.get(270), sortedAge.get(sortedAge.size() - 1));
+  }
+
+  // Question 3
+
+  @Test
+  void shouldReturnANumberAboveZero() {
+    double average = StudentOps.averageAge(students);
+    assertTrue(average > 0);
+  }
+
+  @Test
+  void shouldReturnAverage() {
+    double average = StudentOps.averageAge(students);
+    assertEquals(35.094, average);
   }
 }
 

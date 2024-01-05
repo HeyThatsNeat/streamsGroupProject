@@ -38,22 +38,18 @@ public class StudentOps {
 
   //3. Calculate Average Age: Calculate the average age of all students.
   public static double averageAge(List<Student> students) {
+    LocalDate currentDate = LocalDate.now();
+    students.forEach(student -> {
+      LocalDate dob = student.getDob();
+      Period period = Period.between(dob, currentDate);
+      student.setAgeYear(period.getYears());
+    });
     return students.stream()
+            //mapToDouble is usually for converting to numbers
             .mapToDouble(Student::getAgeYear)
             .average()
             .orElse(0);
   }
-
-  //5
-//  public static double averageAge(List<Student> students) {
-//    return students.stream()
-//            .map(Student::getDob)
-//            //mapToDouble is usually for converting to numbers
-//            .mapToDouble(LocalDate::getYear)
-//            .average()
-//            .orElse(0);
-//
-//  }
 
 
 }
