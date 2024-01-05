@@ -11,25 +11,49 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StudentOps {
-    //  1. Filter Students by Gender: Write a method to filter a list of students by their gender.
+  //  1. Filter Students by Gender: Write a method to filter a list of students by their gender.
 
-    public static List<Student> filterStudentsByGender(List<Student> students, String gender) {
-        return students.stream()
-                .filter(student -> student.getGender().equalsIgnoreCase(gender))
-                .toList();
-    }
+  public static List<Student> filterStudentsByGender(List<Student> students, String gender) {
+    return students.stream()
+            .filter(student -> student.getGender().equalsIgnoreCase(gender))
+            .toList();
+  }
 
-    //2. Sort Students by Age: Sort the list of students by their age (based on date of birth).
-    public static List<Student> sortStudentsByAge(List<Student> students) {
-        LocalDate currentDate = LocalDate.now();
-        students.forEach(student -> {
-            LocalDate dob = student.getDob();
-            Period period = Period.between(dob, currentDate);
-            student.setAge(period.getYears());
-        });
-        return  students.stream()
-                    .sorted(Comparator.comparing(Student::getAge))
-                    .toList();
-        }
+  //2. Sort Students by Age: Sort the list of students by their age (based on date of birth).
+  public static List<Student> sortStudentsByAge(List<Student> students) {
+    LocalDate currentDate = LocalDate.now();
+    students.forEach(student -> {
+      LocalDate dob = student.getDob();
+      Period period = Period.between(dob, currentDate);
+      student.setAgeYear(period.getYears());
+      student.setAgeMonth(period.getMonths());
+      student.setAgeDay(period.getDays());
+    });
+    return students.stream()
+            .sorted(Comparator.comparing(Student::getAgeDay))
+            .sorted(Comparator.comparing(Student::getAgeMonth))
+            .sorted(Comparator.comparing((Student::getAgeYear)))
+            .toList();
+  }
+
+  //3. Calculate Average Age: Calculate the average age of all students.
+  public static double averageAge(List<Student> students) {
+    return students.stream()
+            .mapToDouble(Student::getAgeYear)
+            .average()
+            .orElse(0);
+  }
+
+  //5
+//  public static double averageAge(List<Student> students) {
+//    return students.stream()
+//            .map(Student::getDob)
+//            //mapToDouble is usually for converting to numbers
+//            .mapToDouble(LocalDate::getYear)
+//            .average()
+//            .orElse(0);
+//
+//  }
+
 
 }

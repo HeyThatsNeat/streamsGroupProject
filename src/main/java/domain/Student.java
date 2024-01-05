@@ -11,7 +11,9 @@ public class Student {
     private final String email;
     private final String gender;
     private final LocalDate dob;
-    private int age;
+    private int ageYear;
+    private int ageMonth;
+    private int ageDay;
 
     public Student(Integer id, String first_name, String last_name, String email, String gender, String dob) {
         this.id = id;
@@ -46,12 +48,28 @@ public class Student {
         return dob;
     }
 
-    public int getAge() {
-        return age; // Getter for age
+    public int getAgeYear() {
+        return ageYear; // Getter for age
     }
 
-    public void setAge(int age) {
-        this.age = age; // Setter for age
+    public void setAgeYear(int ageYear) {
+        this.ageYear = ageYear; // Setter for age
+    }
+
+    public int getAgeMonth() {
+        return ageMonth;
+    }
+
+    public void setAgeMonth(int ageMonth) {
+        this.ageMonth = ageMonth;
+    }
+
+    public int getAgeDay() {
+        return ageDay;
+    }
+
+    public void setAgeDay(int ageDay) {
+        this.ageDay = ageDay;
     }
 
     @Override
