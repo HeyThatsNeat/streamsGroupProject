@@ -9,6 +9,7 @@ import java.time.Period;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StudentOps {
   //  1. Filter Students by Gender: Write a method to filter a list of students by their gender.
@@ -51,5 +52,12 @@ public class StudentOps {
             .orElse(0);
   }
 
+  //4. Print Student Names: Print the full names of all students.
+  public static List<String> showFullNames(List<Student> students) {
+    return students.stream()
+            .map(s -> s.getFirst_name() + " " + s.getLast_name())
+            .limit(5)
+            .toList();
+  }
 
 }

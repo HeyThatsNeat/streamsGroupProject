@@ -57,7 +57,6 @@ public class StudentOpsTest {
   }
 
   // Question 3
-
   @Test
   void shouldReturnANumberAboveZero() {
     double average = StudentOps.averageAge(students);
@@ -68,6 +67,19 @@ public class StudentOpsTest {
   void shouldReturnAverage() {
     double average = StudentOps.averageAge(students);
     assertEquals(35.094, average);
+  }
+
+  // Question 4
+  @Test
+  void shouldReturnListOfFullNames() {
+    List<String> fullNames = StudentOps.showFullNames(students);
+    assertNotNull(fullNames);
+  }
+
+  @Test
+  void shouldReturnFirstFullName() {
+    List<String> fullNames = StudentOps.showFullNames(students);
+    assertEquals("Kaitlyn Padden", fullNames.get(0));
   }
 }
 
