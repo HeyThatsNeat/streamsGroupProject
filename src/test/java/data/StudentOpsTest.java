@@ -96,5 +96,16 @@ public class StudentOpsTest {
     assertNotEquals("Agender", students.get(0).getGender());
 
   }
+
+  // Question 6
+  @Test
+  void shouldAtLeastReturnANumberAboveZero() {
+    int maxAge = StudentOps.maxAge(students);
+    System.out.println(maxAge);
+    assertTrue(maxAge > 0);
+  }
+
+
+
 }
 

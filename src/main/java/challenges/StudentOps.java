@@ -66,5 +66,8 @@ public class StudentOps {
             .sorted(Comparator.comparing(Student::getGender))
             .toList();
   }
-
+  //6. Find Maximum Age: Find the maximum age among all students.
+  public static int maxAge(List<Student> students) {
+    return sortStudentsByAge(students).get(students.size() - 1).getAgeYear();
+  }
 }
